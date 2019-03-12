@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Surfer{% endblock %}
+
+{% block body %}
+    <h1>Edit Surfer</h1>
+
+    {{ include('surfer/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('surfer_index') }}">back to list</a>
+
+    {{ include('surfer/_delete_form.html.twig') }}
+{% endblock %}
