@@ -3,47 +3,57 @@
 {% block title %}Internship index{% endblock %}
 
 {% block body %}
-    <h1>Internship index</h1>
+<div class="content-admin-main-inner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+            <div class="contact-form-wrapper background-white p20 mb50">
+                <h1 class="page-title">Internship index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>ShowDate</th>
-                <th>ShowUntil</th>
-                <th>Begin</th>
-                <th>Description</th>
-                <th>End</th>
-                <th>MoreInfo</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for internship in internships %}
-            <tr>
-                <td>{{ internship.id }}</td>
-                <td>{{ internship.showDate ? internship.showDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ internship.showUntil ? internship.showUntil|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ internship.begin ? internship.begin|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ internship.description }}</td>
-                <td>{{ internship.end ? internship.end|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ internship.moreInfo }}</td>
-                <td>{{ internship.name }}</td>
-                <td>{{ internship.price }}</td>
-                <td>
-                    <a href="{{ path('internship_show', {'id': internship.id}) }}">show</a>
-                    <a href="{{ path('internship_edit', {'id': internship.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>ShowDate</th>
+                            <th>ShowUntil</th>
+                            <th>Begin</th>
+                            <th>Description</th>
+                            <th>End</th>
+                            <th>MoreInfo</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for internship in internships %}
+                        <tr>
+                            <td>{{ internship.id }}</td>
+                            <td>{{ internship.showDate ? internship.showDate|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ internship.showUntil ? internship.showUntil|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ internship.begin ? internship.begin|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ internship.description }}</td>
+                            <td>{{ internship.end ? internship.end|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ internship.moreInfo }}</td>
+                            <td>{{ internship.name }}</td>
+                            <td>{{ internship.price }}</td>
+                            <td>
+                                <a href="{{ path('internship_show', {'id': internship.id}) }}">show</a>
+                                <a href="{{ path('internship_edit', {'id': internship.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="10">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-    <a href="{{ path('internship_new') }}">Create new</a>
+                <a href="{{ path('internship_new') }}">Create new</a>
+            </div><!-- /.contact-form-wrapper -->
+        </div>
+    </div>
+    </div>
+</div>
 {% endblock %}

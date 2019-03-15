@@ -3,9 +3,16 @@
 {% block title %}New Internship{% endblock %}
 
 {% block body %}
-    <h1>Create new Internship</h1>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="contact-form-wrapper background-white p20 mb50">
+            <h1 class="page-title">Create new Internship</h1>
 
-    {{ include('internship/_form.html.twig') }}
+            {{ include('internship/_form.html.twig') }}
 
-    <a href="{{ path('internship_index') }}">back to list</a>
+            <a href="{{ path('internship_index') }}">back to list</a>
+
+        </div><!-- /.contact-form-wrapper -->
+    </div>
+</div>
 {% endblock %}

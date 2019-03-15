@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Recherche : {{ search }}</h1>
+        <ul>
+            {% for result in results  %}
+                <li><a href="{{ path('provider_show', {'id': result.id}) }}" >{{ result.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

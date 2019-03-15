@@ -12,12 +12,14 @@ use App\Entity\User;
  */
 class Provider extends User
 {
-    /**
+   /* /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
+   /*
     private $id;
+   */
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -44,10 +46,6 @@ class Provider extends User
      */
     private $website;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="profil", cascade={"persist", "remove"})
-     */
-    private $profil;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Internship", mappedBy="organizer")
@@ -55,7 +53,7 @@ class Provider extends User
     private $internships;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Service", mappedBy="Propose")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Service", mappedBy="Propose",cascade={"persist"})
      */
     private $category;
 
@@ -70,11 +68,12 @@ class Provider extends User
         $this->category = new ArrayCollection();
         $this->logo = new ArrayCollection();
     }
-
+/*
     public function getId(): ?int
     {
         return $this->id;
     }
+*/
 
     public function getEmailContact(): ?string
     {
@@ -136,17 +135,6 @@ class Provider extends User
         return $this;
     }
 
-    public function getProfil(): ?User
-    {
-        return $this->profil;
-    }
-
-    public function setProfil(?User $profil): self
-    {
-        $this->profil = $profil;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Internship[]

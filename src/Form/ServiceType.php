@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Service;
+
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,11 +15,17 @@ class ServiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description')
-            ->add('inFront')
-            ->add('name')
-            ->add('validity')
-            ->add('Propose')
+            ->add('description', TextType::class)
+            ->add('inFront', CheckboxType::class, [
+                'label'    => 'In Front?',
+                'required' => false,
+            ])
+            ->add('name', TextType::class)
+            ->add('validity', CheckboxType::class, [
+                'label'    => 'Is it Valid?',
+                'required' => false,
+            ])
+            //->add('Propose')
         ;
     }
 

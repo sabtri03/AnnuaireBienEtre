@@ -32,7 +32,7 @@ class Internship
     private $begin;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
     private $description;
 
@@ -42,7 +42,7 @@ class Internship
     private $end;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
     private $moreInfo;
 
@@ -57,7 +57,7 @@ class Internship
     private $price;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Provider", inversedBy="internships")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Provider", inversedBy="internships", cascade={"persist"})
      */
     private $organizer;
 

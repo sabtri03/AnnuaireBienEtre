@@ -16,12 +16,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 abstract class User implements UserInterface
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
+
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
@@ -80,29 +82,27 @@ abstract class User implements UserInterface
     private $userType;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\PostalCode")
+     * @ORM\ManyToOne(targetEntity="App\Entity\PostalCode", cascade={"persist"})
      */
     private $adresseCP;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Locality", inversedBy="no")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Locality", inversedBy="no", cascade={"persist"})
      */
     private $adresseLocality;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\City")
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", cascade={"persist"})
      */
     private $adresseCity;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Provider", mappedBy="profil", cascade={"persist", "remove"})
-     */
-    private $profilProv;
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
+
 
     public function getEmail(): ?string
     {
@@ -309,21 +309,5 @@ abstract class User implements UserInterface
         return $this;
     }
 
-    public function getProfilProv(): ?Provider
-    {
-        return $this->profilProv;
-    }
 
-    public function setProfilProv(?Provider $profilProv): self
-    {
-        $this->profilProv = $profilProv;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newProfilProv = $profilProv === null ? null : $this;
-        if ($newProfilProv !== $profilProv->getProfilProv()) {
-            $profilProv->setProfilProv($newProfilProv);
-        }
-
-        return $this;
-    }
 }
