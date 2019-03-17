@@ -3,59 +3,56 @@
 {% block title %}Surfer index{% endblock %}
 
 {% block body %}
-    <h1>Surfer index</h1>
+<div class="content-admin-main-inner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="contact-form-wrapper background-white p20 mb50">
+                    <h1 class="page-title">Surfer index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>AdresseNum</th>
-                <th>AdresseStreet</th>
-                <th>Banned</th>
-                <th>Identifiant</th>
-                <th>InscrActivated</th>
-                <th>InscriDate</th>
-                <th>UnsucessfulTry</th>
-                <th>UserType</th>
-                <th>Newsletter</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for surfer in surfers %}
-            <tr>
-                <td>{{ surfer.id }}</td>
-                <td>{{ surfer.email }}</td>
-                <td>{{ surfer.roles ? surfer.roles|json_encode : '' }}</td>
-                <td>{{ surfer.password }}</td>
-                <td>{{ surfer.adresseNum }}</td>
-                <td>{{ surfer.adresseStreet }}</td>
-                <td>{{ surfer.banned ? 'Yes' : 'No' }}</td>
-                <td>{{ surfer.identifiant }}</td>
-                <td>{{ surfer.inscrActivated ? 'Yes' : 'No' }}</td>
-                <td>{{ surfer.inscriDate ? surfer.inscriDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ surfer.unsucessfulTry ? 'Yes' : 'No' }}</td>
-                <td>{{ surfer.userType }}</td>
-                <td>{{ surfer.newsletter ? 'Yes' : 'No' }}</td>
-                <td>{{ surfer.name }}</td>
-                <td>{{ surfer.surname }}</td>
-                <td>
-                    <a href="{{ path('surfer_show', {'id': surfer.id}) }}">show</a>
-                    <a href="{{ path('surfer_edit', {'id': surfer.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="16">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Email</th>
+                                <th>Banned</th>
+                                <th>Identifiant</th>
+                                <th>InscrActivated</th>
+                                <th>InscriDate</th>
+                                <th>UnsucessfulTry</th>
+                                <th>UserType</th>
+                                <th>Newsletter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for surfer in surfers %}
+                            <tr>
+                                <td>{{ surfer.id }}</td>
+                                <td>{{ surfer.email }}</td>
+                                <td>{{ surfer.banned ? 'Yes' : 'No' }}</td>
+                                <td>{{ surfer.identifiant }}</td>
+                                <td>{{ surfer.inscrActivated ? 'Yes' : 'No' }}</td>
+                                <td>{{ surfer.inscriDate ? surfer.inscriDate|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ surfer.unsucessfulTry ? 'Yes' : 'No' }}</td>
+                                <td>{{ surfer.userType }}</td>
+                                <td>{{ surfer.newsletter ? 'Yes' : 'No' }}</td>
+                                <td>
+                                    <a href="{{ path('surfer_show', {'id': surfer.id}) }}">show</a>
+                                    <a href="{{ path('surfer_edit', {'id': surfer.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="16">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
 
-    <a href="{{ path('surfer_new') }}">Create new</a>
+                    <a href="{{ path('surfer_new') }}">Create new</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

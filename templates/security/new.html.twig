@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+<div class="background-white p20 mb50">
+    <h1 class="page-title">Create new User</h1>
+
+    {{ include('security/_form.html.twig') }}
+</div>
+{% endblock %}

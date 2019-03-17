@@ -23,29 +23,25 @@
                                      </button>
                                  </form>
                              </div><!-- /.header-search -->
-                            {#{{ render(controller('App\\Controller\\SearchController::index',{} )) }}
-#}
-                            <ul class="header-nav-social social-links nav nav-pills">
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul><!-- /.header-nav-social -->
+                           {#{{ render(controller('App\\Controller\\SearchController::index',{} )) }}#}
 
-                            <!--{#
+
                             <ul class="header-nav-secondary nav nav-pills">
                                 <li><a href="{{ path('app_login')}}">Login</a></li>
-                                <li><a href="{{ path('app_register')}}">Register</a></li>
-                                {% if is_granted(expression('"ROLE_WORKER" in roles')) %}
-                                    <li><a href="{{ path('edit_profile_worker')}}">Edit profile</a></li>
+                                <li><a href="{{ path('app_signin')}}">Register</a></li>
+                                {% if is_granted ('ROLE_SURFER') == true %}
+                                    <li><a href="{{ path('surfer_edit', {'id': app.user.id}) }}">Edit profile</a></li>
                                 {% endif %}
-                                {% if is_granted(expression('"ROLE_USER" in roles')) %}
-                                    <li><a href="{{ path('edit_profile_worker')}}">Edit profile</a></li>
+                                {% if is_granted ('ROLE_PROVIDER') == true %}
+                                    <li><a href="{{ path('provider_edit', {'id': app.user.id}) }}">Edit profile</a></li>
                                 {% endif %}
-                                {% if is_granted(expression('"ROLE_ADMIN" in roles')) %}
-                                    <li><a href="{{ path('edit_profile_worker')}}">Edit Services</a></li>
+                                {% if is_granted ('ROLE_ADMIN') == true %}
+                                    <li><a href="{{ path('surfer_show') }}">Surfer interface</a></li>
+                                    <li><a href="{{ path('provider_show') }}">Provider interface</a></li>
+                                    <li><a href="{{ path('service_show') }}">Service interface</a></li>
+                                    <li><a href="{{ path('internship_show') }}">Internship interface</a></li>
                                 {% endif %}
                             </ul>
-                            #}-->
                         </div><!-- /.header-top -->
 
                         <div class="header-bottom">

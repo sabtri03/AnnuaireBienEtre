@@ -3,11 +3,17 @@
 {% block title %}Edit Surfer{% endblock %}
 
 {% block body %}
-    <h1>Edit Surfer</h1>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="contact-form-wrapper background-white p20 mb50">
+            <h1 class="page-title">Edit Surfer</h1>
 
-    {{ include('surfer/_form.html.twig', {'button_label': 'Update'}) }}
+            {{ include('surfer/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('surfer_index') }}">back to list</a>
+            <a href="{{ path('surfer_index') }}">back to list</a>
 
-    {{ include('surfer/_delete_form.html.twig') }}
+            {{ include('surfer/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
 {% endblock %}

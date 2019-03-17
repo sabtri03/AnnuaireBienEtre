@@ -1,10 +1,17 @@
-<div class="header-search">
-    {{ form_start(form, { 'attr': {'class': 'navbar-form navbar-leftform-inline'} , 'action': path('search_show')}) }}
-    <div class="form-group">
-        {{ form_widget(form.search, { 'attr': {'class': 'form-control form-control-sm ml-3 w-75'} }) }}
-       {#{{ form_widget(form.save, { 'attr': {'class': 'btn btn-outline-secondary fa fa-search'} }) }}#}
-    </div>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="contact-form-wrapper background-white p20 mb50">
+            <h1 class="page-title">Search Provider</h1>
 
-    {{ form_rest(form) }}
-    {{ form_end(form) }}
+                {{ form_start(form, { 'attr': {'class': 'navbar-form navbar-leftform-inline'} , 'action': path('search_show')}) }}
+                <div class="form-group">
+                    {{ form_widget(form.search, { 'attr': {'class': 'form-control form-control-sm ml-3 w-75'} }) }}
+                    {{ form_widget(form.selection, { 'attr': {'class': 'form-control form-control-sm ml-3 w-75'} }) }}
+                    {{ form_widget(form.search, { 'attr': {'class': 'btn btn-outline-secondary fa fa-search'} }) }}
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+
+        </div>
+    </div>
 </div>

@@ -3,63 +3,62 @@
 {% block title %}Provider index{% endblock %}
 
 {% block body %}
-    <h1>Provider index</h1>
+<div class="content-admin-main-inner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="contact-form-wrapper background-white p20 mb50">
+                    <h1 class="page-title">Provider index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>AdresseNum</th>
-                <th>AdresseStreet</th>
-                <th>Banned</th>
-                <th>Identifiant</th>
-                <th>InscrActivated</th>
-                <th>InscriDate</th>
-                <th>UnsucessfulTry</th>
-                <th>UserType</th>
-                <th>EmailContact</th>
-                <th>Name</th>
-                <th>PhoneNumb</th>
-                <th>TvaNumb</th>
-                <th>Website</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for provider in providers %}
-            <tr>
-                <td>{{ provider.id }}</td>
-                <td>{{ provider.email }}</td>
-                <td>{{ provider.roles ? provider.roles|json_encode : '' }}</td>
-                <td>{{ provider.password }}</td>
-                <td>{{ provider.adresseNum }}</td>
-                <td>{{ provider.adresseStreet }}</td>
-                <td>{{ provider.banned ? 'Yes' : 'No' }}</td>
-                <td>{{ provider.identifiant }}</td>
-                <td>{{ provider.inscrActivated ? 'Yes' : 'No' }}</td>
-                <td>{{ provider.inscriDate ? provider.inscriDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ provider.unsucessfulTry ? 'Yes' : 'No' }}</td>
-                <td>{{ provider.userType }}</td>
-                <td>{{ provider.emailContact }}</td>
-                <td>{{ provider.name }}</td>
-                <td>{{ provider.phoneNumb }}</td>
-                <td>{{ provider.tvaNumb }}</td>
-                <td>{{ provider.website }}</td>
-                <td>
-                    <a href="{{ path('provider_show', {'id': provider.id}) }}">show</a>
-                    <a href="{{ path('provider_edit', {'id': provider.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="18">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <!--<th>Roles</th>-->
+                                <!--<th>AdresseNum</th>-->
+                                <!--<th>AdresseStreet</th>-->
+                                <th>Banned</th>
+                                <th>Identifiant</th>
+                                <th>InscrActivated</th>
+                                <th>InscriDate</th>
+                                <th>UnsucessfulTry</th>
+                                <th>UserType</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for provider in providers %}
+                            <tr>
+                                <td>{{ provider.id }}</td>
+                                <td>{{ provider.name }}</td>
+                                <td>{{ provider.email }}</td>
+                                <!--<td>{#{{ provider.roles ? provider.roles|json_encode : '' }}#}</td>-->
+                                <!--<td>{#{{ provider.adresseNum }}#}</td>-->
+                                <!--<td>{#{{ provider.adresseStreet }}#}</td>-->
+                                <td>{{ provider.banned ? 'Yes' : 'No' }}</td>
+                                <td>{{ provider.identifiant }}</td>
+                                <td>{{ provider.inscrActivated ? 'Yes' : 'No' }}</td>
+                                <td>{{ provider.inscriDate ? provider.inscriDate|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ provider.unsucessfulTry ? 'Yes' : 'No' }}</td>
+                                <td>{{ provider.userType }}</td>
+                                <td>
+                                    <a href="{{ path('provider_show', {'id': provider.id}) }}">show</a>
+                                    <a href="{{ path('provider_edit', {'id': provider.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="18">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
 
-    <a href="{{ path('provider_new') }}">Create new</a>
+                    <a href="{{ path('provider_new') }}">Create new</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -24,6 +24,9 @@ class SearchController extends AbstractController
         ]);
     }
 
+
+
+
     /**
      * @Route("/search/show", name="search_show")
      *
@@ -33,7 +36,7 @@ class SearchController extends AbstractController
         //catch the searched term
         $search = $request->query->get('search');
         //Use the query builder to retrieve the result
-        $results = $repository->findByNom($search['search']);
+        $results = $repository->findByNomLocalityService($search);
 
         return $this->render(
             'search/index.html.twig',

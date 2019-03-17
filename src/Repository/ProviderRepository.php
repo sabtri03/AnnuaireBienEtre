@@ -49,5 +49,38 @@ class ProviderRepository extends ServiceEntityRepository
     */
 
 
+    public function findByNomLocalityService($search): array
+    {
+        $qb = $this->createQueryBuilder('s');
+        //$qb->addCriteria($qb);
+        /*$qb->andWhere(
+            $qb->expr()->like( 's.name', ':name' )
+        );
+        $qb->setParameter('name',"%".$search."%" );
+*/
+        //dump($search['selection']); die();
+        if($search['selection'] == 1){
+            $qb->andWhere('s.name LIKE :name');
+            $qb->setParameter('name','%'.$search['search'].'%');
+        }
+        if($search['selection'] == 3){
+            $qb->leftJoin('s.category','category');
+            $qb->addSelect('category');
+            $qb->andWhere('category.name LIKE :service');
+            $qb->setParameter('service', '%'.$search['search'].'%');
+        }
+        if($search['selection'] == 2){
+            $qb->leftJoin('s.adresseLocality','adresse');
+            $qb->addSelect('adresse');
+            $qb->andWhere('adresse.locality LIKE :locality');
+            $qb->setParameter('locality', '%'.$search['search'].'%');
+        }
+
+        $query = $qb->getQuery();
+        //$results = $query->getResult();
+        return $query->execute();
+    }
+
+
 
 }

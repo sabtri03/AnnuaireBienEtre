@@ -34,7 +34,7 @@ class SurferFixtures extends Fixture implements DependentFixtureInterface
             $surfer->setInscrActivated(1);
             $surfer->setInscriDate(new \Datetime());
             $surfer->setAdresseNum(rand(0, 400));
-            $surfer->setRoles(array('ROLE_USER'));
+            $surfer->setRoles(array('ROLE_SURFER'));
 
             //password encoded with the previous encoding
             $surfer->setPassword($this->passwordEncoder->encodePassword(

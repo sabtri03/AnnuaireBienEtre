@@ -41,7 +41,7 @@ class ProviderFixtures extends Fixture implements DependentFixtureInterface
             $provider->setInscrActivated(1);
             $provider->setInscriDate(new \Datetime());
             $provider->setAdresseNum(rand(0,400));
-            $provider->setRoles(array('ROLE_USER'));
+            $provider->setRoles(array('ROLE_PROVIDER'));
             //password encoded with the previous encoding
             $provider->setPassword($this->passwordEncoder->encodePassword(
                 $provider,

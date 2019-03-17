@@ -75,6 +75,21 @@
                 <th>Website</th>
                 <td>{{ provider.website }}</td>
             </tr>
+            <tr>
+                <th>Category</th>
+                <td>
+                    {% for category in provider.category %}
+                        {{ category.name }}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Internship</th>
+                <td>
+                    {% for internship in provider.internships %}
+                        {{ internship.name }}
+                    {% endfor %}
+                </td>
         </tbody>
     </table>
 

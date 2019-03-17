@@ -16,14 +16,14 @@ class InternshipType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('showDate', DateType::class, array('widget' => 'single_text','format' => 'yyyy-MM-dd','attr' => array('placeholder' => 'yyyy-MM-dd',)))//,'input' => 'string'
-            ->add('showUntil', DateType::class, array('widget' => 'single_text','format' => 'yyyy-MM-dd','attr' => array('placeholder' => 'yyyy-MM-dd',)))
-            ->add('begin', DateType::class, array('widget' => 'single_text','format' => 'yyyy-MM-dd','attr' => array('placeholder' => 'yyyy-MM-dd',)))
-            ->add('description', TextType::class)
-            ->add('end', DateType::class, array('widget' => 'single_text','format' => 'yyyy-MM-dd','attr' => array('placeholder' => 'yyyy-MM-dd',)))
-            ->add('moreInfo', TextType::class)
-            ->add('name', TextType::class)
-            ->add('price', TextType::class)
+            ->add('showDate', DateType::class, array('label'=> 'Show Date','widget' => 'single_text','format' => 'yyyy-MM-dd','attr' => array('placeholder' => 'yyyy-MM-dd','class' => 'form-control', 'style' => 'margin-bottom:15px')))//,'input' => 'string'
+            ->add('showUntil', DateType::class, array('label'=> 'Show until','widget' => 'single_text','format' => 'yyyy-MM-dd','attr' => array('placeholder' => 'yyyy-MM-dd','class' => 'form-control', 'style' => 'margin-bottom:15px')))
+            ->add('begin', DateType::class, array('label'=> 'Begin Date','widget' => 'single_text','format' => 'yyyy-MM-dd','attr' => array('placeholder' => 'yyyy-MM-dd','class' => 'form-control', 'style' => 'margin-bottom:15px')))
+            ->add('description', TextType::class,array('label'=> 'Description','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+            ->add('end', DateType::class, array('label'=> 'End Date','widget' => 'single_text','format' => 'yyyy-MM-dd','attr' => array('placeholder' => 'yyyy-MM-dd','class' => 'form-control', 'style' => 'margin-bottom:15px')))
+            ->add('moreInfo', TextType::class,array('label'=> 'More information','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+            ->add('name', TextType::class,array('label'=> 'description','Name' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
+            ->add('price', TextType::class,array('label'=> 'Price','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
             //->add('organizer', EntityType::class, ['class'=>Provider::class,'choice_label'=>'provider'])
         ;
     }

@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +15,16 @@ class SearchType extends AbstractType
         $builder
             ->setMethod('GET')
             ->add('search')
-            //->add('save', SubmitType::class)
+            ->add('selection', ChoiceType::class, array(
+                'choices' => array(
+                    'by name' => 1,
+                    'by locality' => 2,
+                    'by Service' => 3,
+
+                ),
+            ))
+
+            ->add('Search', SubmitType::class)
         ;
     }
 

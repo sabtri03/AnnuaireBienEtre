@@ -1,0 +1,15 @@
+{# templates/emails/registration.html.twig #}
+<h3>You did it! You registered!</h3>
+
+Hi {{ name }}! You're successfully registered.
+{{ id }}
+{# example, assuming you have a route named "login" #}
+<!-- Provider Edit  -->
+To login as a Provider, go to: <a href="{{ url('provider_edit', {'id': id}) }}">...</a>.
+<!-- Surfer Edit -->
+To login as a Surfer, go to: <a href="{{ url('surfer_edit', {'id': id}) }}">...</a>.
+
+Thanks!
+
+{# Makes an absolute URL to the /images/logo.png file #}
+<img src="{{ absolute_url(asset('img/logo.png')) }}">

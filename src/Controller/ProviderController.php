@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\Provider;
 use App\Form\ProviderType;
 use App\Repository\ProviderRepository;
+use App\Services\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/provider")
@@ -28,13 +30,27 @@ class ProviderController extends AbstractController
     /**
      * @Route("/new", name="provider_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $provider = new Provider();
         $form = $this->createForm(ProviderType::class, $provider);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $provider->setPassword(
+                $passwordEncoder->encodePassword(
+                    $provider,
+                    $form->get('password')->getData()
+                )
+            );
+            // fill in the time , user group and other data
+            $provider->setInscriDate(new \DateTime());
+            $provider->setBanned(0);
+            $provider->setInscrActivated(1);
+            $provider->setRoles(array('ROLE_PROVIDER'));
+            $provider->setUnsucessfulTry(0);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($provider);
             $entityManager->flush();
@@ -64,6 +80,7 @@ class ProviderController extends AbstractController
     public function edit(Request $request, Provider $provider): Response
     {
         $form = $this->createForm(ProviderType::class, $provider);
+        $form->remove('password');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
