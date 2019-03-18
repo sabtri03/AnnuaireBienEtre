@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Surfer{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-8">
+        <div class="contact-form-wrapper background-white p20 mb50">
+            <h1 class="page-title">Edit Surfer</h1>
+
+            {{ include('register/surfer/_form.html.twig', {'button_label': 'Update'}) }}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Surfer{% endblock %}
+
+{% block body %}
+    <h1>Surfer</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Email</th>
+                <td>{{ surfer.email }}</td>
+            </tr>
+            <tr>
+                <th>AdresseNum</th>
+                <td>{{ surfer.adresseNum }}</td>
+            </tr>
+            <tr>
+                <th>AdresseStreet</th>
+                <td>{{ surfer.adresseStreet }}</td>
+            </tr>
+
+            <tr>
+                <th>InscriDate</th>
+                <td>{{ surfer.inscriDate ? surfer.inscriDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+
+            <tr>
+                <th>Newsletter</th>
+                <td>{{ surfer.newsletter ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ surfer.name }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ surfer.surname }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('surfer_profile_edit', {'id': surfer.id}) }}">edit</a>
+
+{% endblock %}
+s

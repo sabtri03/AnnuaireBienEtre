@@ -2,13 +2,13 @@
 var $collectionHolder;
 
 // setup an "add a Logo" link
-var $addLogoButton = $('<button type="button" class="add_logo_link btn btn-primary fa fa-comment">Add a Logo</button>');
+var $addLogoButton = $('<button type="button" href="#" class="add_tag_link btn btn-primary fa fa-comment">Add a Logo</button>');
 var $newLinkLi = $('<li></li>').append($addLogoButton);
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function() {
 
     // Get the ul that holds the collection of logo
-    var $collectionHolder = $('ul.logos');
+    $collectionHolder = $('ul.logos');
 
     // add the "add a tag" anchor and li to the logos ul
     $collectionHolder.append($newLinkLi);

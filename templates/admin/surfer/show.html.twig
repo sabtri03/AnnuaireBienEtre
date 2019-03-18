@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Surfer{% endblock %}
+
+{% block body %}
+    <h1>Surfer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ surfer.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ surfer.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ surfer.roles ? surfer.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ surfer.password }}</td>
+            </tr>
+            <tr>
+                <th>AdresseNum</th>
+                <td>{{ surfer.adresseNum }}</td>
+            </tr>
+            <tr>
+                <th>AdresseStreet</th>
+                <td>{{ surfer.adresseStreet }}</td>
+            </tr>
+            <tr>
+                <th>Banned</th>
+                <td>{{ surfer.banned ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Identifiant</th>
+                <td>{{ surfer.identifiant }}</td>
+            </tr>
+            <tr>
+                <th>InscrActivated</th>
+                <td>{{ surfer.inscrActivated ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>InscriDate</th>
+                <td>{{ surfer.inscriDate ? surfer.inscriDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UnsucessfulTry</th>
+                <td>{{ surfer.unsucessfulTry ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>UserType</th>
+                <td>{{ surfer.userType }}</td>
+            </tr>
+            <tr>
+                <th>Newsletter</th>
+                <td>{{ surfer.newsletter ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ surfer.name }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ surfer.surname }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('surfer_admin_index') }}">back to list</a>
+
+    <a href="{{ path('surfer_admin_edit', {'id': surfer.id}) }}">edit</a>
+
+    {{ include('admin/surfer/_delete_form.html.twig') }}
+{% endblock %}

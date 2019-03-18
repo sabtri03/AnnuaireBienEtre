@@ -30,16 +30,21 @@
                                 <li><a href="{{ path('app_login')}}">Login</a></li>
                                 <li><a href="{{ path('app_signin')}}">Register</a></li>
                                 {% if is_granted ('ROLE_SURFER') == true %}
-                                    <li><a href="{{ path('surfer_edit', {'id': app.user.id}) }}">Edit profile</a></li>
+                                    <li><a href="{{ path('surfer_profile_show', {'id': app.user.id}) }}">Show profile</a></li>
+                                    <li><a href="{{ path('surfer_profile_edit', {'id': app.user.id}) }}">Edit profile</a></li>
+                                    <li><a href="{{ path('logout')}}">Logout</a></li>
                                 {% endif %}
                                 {% if is_granted ('ROLE_PROVIDER') == true %}
-                                    <li><a href="{{ path('provider_edit', {'id': app.user.id}) }}">Edit profile</a></li>
+                                    <li><a href="{{ path('provider_profile_show', {'id': app.user.id}) }}">Show profile</a></li>
+                                    <li><a href="{{ path('provider_profile_edit', {'id': app.user.id}) }}">Edit profile</a></li>
+                                    <li><a href="{{ path('logout')}}">Logout</a></li>
+                                   <!-- <li><a href="{#{{ path('internship_profile_show') }}#}">Edit Internship</a></li>-->
                                 {% endif %}
                                 {% if is_granted ('ROLE_ADMIN') == true %}
-                                    <li><a href="{{ path('surfer_show') }}">Surfer interface</a></li>
-                                    <li><a href="{{ path('provider_show') }}">Provider interface</a></li>
-                                    <li><a href="{{ path('service_show') }}">Service interface</a></li>
-                                    <li><a href="{{ path('internship_show') }}">Internship interface</a></li>
+                                    <li><a href="{{ path('surfer_admin_index') }}">Surfer interface</a></li>
+                                    <li><a href="{{ path('provider_admin_index') }}">Provider interface</a></li>
+                                    <li><a href="{{ path('service_admin_index') }}">Service interface</a></li>
+                                    <li><a href="{{ path('logout')}}">Logout</a></li>
                                 {% endif %}
                             </ul>
                         </div><!-- /.header-top -->
@@ -59,16 +64,14 @@
                                         <li><a href="{{ path('home')}}">Home</a></li>
                                     </ul>
                                 </li>
-
                                 <li >
-                                    <a href="#">Services <i class="fa fa-chevron-down"></i></a>
-
+                                    <a href="{{ path('service_front_index')}}">Services <i class="fa fa-chevron-down"></i></a>
                                     <ul class="sub-menu">
-
-                                        {{ render(controller('App\\Controller\\ServiceController::listService',{} )) }}
-
+                                        {{ render(controller('App\\Controller\\FrontController::listService',{} )) }}
                                     </ul>
-
+                                </li>
+                                <li >
+                                    <a href="{{ path('provider_front_index')}}">Provider <i class="fa fa-chevron-down"></i></a>
                                 </li>
 
                             </ul>

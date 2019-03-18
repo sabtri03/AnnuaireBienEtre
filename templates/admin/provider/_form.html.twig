@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+        <!--add Picture   -->
+        <div class="form-group">
+            <ul class="logos" data-prototype="{{ form_widget(form.logo.vars.prototype)|e('html_attr') }}">
+                {# iterate over each existing tag and render its only field: name #}
+{#
+                {% for logo in form.logo %}
+                    <li>{{ form_row(logo.picture) }}</li>
+                {% endfor %}
+#}
+            </ul>
+        </div><!-- /.form-group -->
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

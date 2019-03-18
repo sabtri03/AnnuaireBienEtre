@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Provider{% endblock %}
+
+{% block body %}
+    <h1>Edit Provider</h1>
+
+    {{ include('profile/provider/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/registration.js') }}" type="text/javascript"></script>
+{% endblock %}

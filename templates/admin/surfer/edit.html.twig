@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Surfer{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-8">
+        <div class="contact-form-wrapper background-white p20 mb50">
+            <h1 class="page-title">Edit Surfer</h1>
+
+            {{ include('admin/surfer/_form.html.twig', {'button_label': 'Update'}) }}
+
+            <a href="{{ path('surfer_admin_index') }}">back to list</a>
+
+            {{ include('admin/surfer/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

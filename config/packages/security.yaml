@@ -23,7 +23,9 @@ security:
             form_login:
                 login_path: login
                 check_path: login
-
+            logout:
+                path:   /logout
+                target: /
             # activate different ways to authenticate
 
             # http_basic: true
@@ -36,7 +38,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/profile, roles: ROLE_SURFER }
-        - { path: ^/profile, roles: ROLE_PROVIDER }
+        - { path: ^/profile/provider, roles: ROLE_PROVIDER }
+        - { path: ^/profile/surfer, roles: ROLE_SURFER }
+        - { path: ^/profile, roles: ROLE_USER }

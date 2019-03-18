@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Provider{% endblock %}
+
+{% block body %}
+    <h1>Create new Provider</h1>
+
+    {{ include('register/provider/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/registration.js') }}" type="text/javascript"></script>
+{% endblock %}

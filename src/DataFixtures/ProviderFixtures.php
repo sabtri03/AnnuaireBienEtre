@@ -60,11 +60,12 @@ class ProviderFixtures extends Fixture implements DependentFixtureInterface
             $provider->setAdresseCity($city);
 
             //creation of the Object Picture for the Logo
+            /*
             $pictureLogo = new Picture();
             $pictureLogo->setPicture('https://via.placeholder.com/140x100?text=Logo');
             $pictureLogo->setRank(1);
             $provider->addLogo($pictureLogo);
-
+            */
             //get back the Object Services from serviceFixture
             $service =$this->getReference(ServiceFixtures::SERVICES_REFERENCE);
             $provider->addCategory($service);
