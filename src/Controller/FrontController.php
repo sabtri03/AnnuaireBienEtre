@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Provider;
+use App\Entity\Service;
 use App\Repository\ProviderRepository;
 use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,6 +22,16 @@ class FrontController extends AbstractController
         {
             return $this->render('front/sevices_index.html.twig', [
                 'services' => $serviceRepository->findAll(),
+            ]);
+        }
+
+        /**
+         * @Route("/service/{id}", name="service_front_show", methods={"GET"})
+         */
+        public function servicesShow(Service $service): Response
+        {
+            return $this->render('front/servicesShow.html.twig', [
+                'service' => $service,
             ]);
         }
 
@@ -44,7 +55,7 @@ class FrontController extends AbstractController
         }
 
         /**
-         * @Route("/provider/{id}", name="provider_profile_show", methods={"GET"})
+         * @Route("/provider/{id}", name="provider_front_show", methods={"GET"})
          */
         public function show(Provider $provider): Response
         {

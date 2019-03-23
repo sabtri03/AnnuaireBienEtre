@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190314213411 extends AbstractMigration
+final class Version20190322202333 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -32,7 +32,7 @@ final class Version20190314213411 extends AbstractMigration
         $this->addSql('CREATE TABLE postal_code (id INT AUTO_INCREMENT NOT NULL, postal_code VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE promotion (id INT AUTO_INCREMENT NOT NULL, offer_id INT DEFAULT NULL, category_id INT DEFAULT NULL, show_date DATETIME DEFAULT NULL, show_until DATETIME DEFAULT NULL, begin DATETIME DEFAULT NULL, description VARCHAR(255) DEFAULT NULL, doc_pdf VARCHAR(255) DEFAULT NULL, end DATETIME DEFAULT NULL, name VARCHAR(255) NOT NULL, INDEX IDX_C11D7DD153C674EE (offer_id), INDEX IDX_C11D7DD112469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, adresse_cp_id INT DEFAULT NULL, adresse_locality_id INT DEFAULT NULL, adresse_city_id INT DEFAULT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, adresse_num VARCHAR(255) DEFAULT NULL, adresse_street VARCHAR(255) DEFAULT NULL, banned TINYINT(1) DEFAULT NULL, identifiant INT DEFAULT NULL, inscr_activated TINYINT(1) DEFAULT NULL, inscri_date DATETIME DEFAULT NULL, unsucessful_try TINYINT(1) DEFAULT NULL, user_type VARCHAR(255) DEFAULT NULL, discr VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), INDEX IDX_8D93D64985CF3708 (adresse_cp_id), INDEX IDX_8D93D649468CC37D (adresse_locality_id), INDEX IDX_8D93D64925B2DD30 (adresse_city_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE provider (id INT NOT NULL, email_contact VARCHAR(255) NOT NULL, name VARCHAR(255) DEFAULT NULL, phone_numb VARCHAR(255) DEFAULT NULL, tva_numb VARCHAR(255) DEFAULT NULL, website VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE provider (id INT NOT NULL, user_id INT DEFAULT NULL, email_contact VARCHAR(255) NOT NULL, name VARCHAR(255) DEFAULT NULL, phone_numb VARCHAR(255) DEFAULT NULL, tva_numb VARCHAR(255) DEFAULT NULL, website VARCHAR(255) DEFAULT NULL, UNIQUE INDEX UNIQ_92C4739CA76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE service (id INT AUTO_INCREMENT NOT NULL, description VARCHAR(500) DEFAULT NULL, in_front TINYINT(1) DEFAULT NULL, name VARCHAR(255) NOT NULL, validity TINYINT(1) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE service_provider (service_id INT NOT NULL, provider_id INT NOT NULL, INDEX IDX_6BB228A1ED5CA9E6 (service_id), INDEX IDX_6BB228A1A53A8AA (provider_id), PRIMARY KEY(service_id, provider_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE surfer (id INT NOT NULL, avatar_id INT DEFAULT NULL, newsletter TINYINT(1) DEFAULT NULL, name VARCHAR(255) NOT NULL, surname VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_26ABE10486383B10 (avatar_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
@@ -47,6 +47,7 @@ final class Version20190314213411 extends AbstractMigration
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D64985CF3708 FOREIGN KEY (adresse_cp_id) REFERENCES postal_code (id)');
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649468CC37D FOREIGN KEY (adresse_locality_id) REFERENCES locality (id)');
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D64925B2DD30 FOREIGN KEY (adresse_city_id) REFERENCES city (id)');
+        $this->addSql('ALTER TABLE provider ADD CONSTRAINT FK_92C4739CA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
         $this->addSql('ALTER TABLE provider ADD CONSTRAINT FK_92C4739CBF396750 FOREIGN KEY (id) REFERENCES user (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE service_provider ADD CONSTRAINT FK_6BB228A1ED5CA9E6 FOREIGN KEY (service_id) REFERENCES service (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE service_provider ADD CONSTRAINT FK_6BB228A1A53A8AA FOREIGN KEY (provider_id) REFERENCES provider (id) ON DELETE CASCADE');
@@ -66,6 +67,7 @@ final class Version20190314213411 extends AbstractMigration
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D649468CC37D');
         $this->addSql('ALTER TABLE surfer DROP FOREIGN KEY FK_26ABE10486383B10');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D64985CF3708');
+        $this->addSql('ALTER TABLE provider DROP FOREIGN KEY FK_92C4739CA76ED395');
         $this->addSql('ALTER TABLE provider DROP FOREIGN KEY FK_92C4739CBF396750');
         $this->addSql('ALTER TABLE surfer DROP FOREIGN KEY FK_26ABE104BF396750');
         $this->addSql('ALTER TABLE internship DROP FOREIGN KEY FK_10D1B00C876C4DDA');

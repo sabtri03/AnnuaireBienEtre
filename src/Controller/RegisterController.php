@@ -2,15 +2,18 @@
 
 namespace App\Controller;
 
+
+
 use App\Entity\Provider;
 use App\Entity\Surfer;
+use App\Entity\User;
 use App\Form\ProviderType;
 use App\Form\SurferType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class RegisterController extends AbstractController
 {
@@ -21,7 +24,10 @@ class RegisterController extends AbstractController
      */
     public function editProvider(Request $request, Provider $provider): Response
     {
+
+
         $form = $this->createForm(ProviderType::class, $provider);
+        //$form->add($user);
         $form->remove('password');
         $form->handleRequest($request);
 
@@ -48,6 +54,7 @@ class RegisterController extends AbstractController
      */
     public function editSurfer(Request $request, Surfer $surfer): Response
     {
+
         $form = $this->createForm(SurferType::class, $surfer);
         $form->remove('password');
         $form->handleRequest($request);

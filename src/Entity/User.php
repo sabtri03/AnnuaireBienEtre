@@ -98,6 +98,7 @@ class User implements UserInterface  //abstract
 
 
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -308,8 +309,7 @@ class User implements UserInterface  //abstract
 
         return $this;
     }
-    protected function getValue() {
-        return "UserValue";
-    }
+
+
 
 }

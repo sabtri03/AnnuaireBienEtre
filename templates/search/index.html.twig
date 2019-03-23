@@ -9,7 +9,7 @@
             <h1 class="page-title">Recherche : {{ search }}</h1>
             <ul>
                 {% for result in results  %}
-                    <li><a href="{{ path('provider_show', {'id': result.id}) }}" >{{ result.name }}</a></li>
+                    <li><a href="{{ path('provider_front_show', {'id': result.id}) }}" >{{ result.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>

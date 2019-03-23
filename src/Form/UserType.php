@@ -5,9 +5,12 @@ namespace App\Form;
 use App\Entity\City;
 use App\Entity\Locality;
 use App\Entity\PostalCode;
+use App\Entity\Provider;
 use App\Entity\User;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -37,11 +40,6 @@ class UserType extends AbstractType
                     ])
                 ]
             ], array('label'=> 'Password','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-            ->add('adresseNum', TextType::class, array('label'=> 'Adresse Number','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-            ->add('adresseStreet', TextType::class, array('label'=> 'Adresse Street','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-            ->add('adresseCP', EntityType::class, ['class'=>PostalCode::class,'choice_label'=>'postalCode'] , array('label'=> 'Code Postal','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-            ->add('adresseLocality', EntityType::class, ['class'=>Locality::class,'choice_label'=>'locality'], array('label'=> 'Locality','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-            ->add('adresseCity', EntityType::class, ['class'=>City::class,'choice_label'=>'city'], array('label'=> 'City','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
         ;
     }
 
@@ -51,4 +49,5 @@ class UserType extends AbstractType
             'data_class' => User::class,
         ]);
     }
+
 }

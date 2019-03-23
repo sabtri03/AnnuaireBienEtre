@@ -28,7 +28,7 @@
 
                             <ul class="header-nav-secondary nav nav-pills">
                                 <li><a href="{{ path('app_login')}}">Login</a></li>
-                                <li><a href="{{ path('app_signin')}}">Register</a></li>
+                                <li><a href="{{ path('app_signin_Choice')}}">Register</a></li>
                                 {% if is_granted ('ROLE_SURFER') == true %}
                                     <li><a href="{{ path('surfer_profile_show', {'id': app.user.id}) }}">Show profile</a></li>
                                     <li><a href="{{ path('surfer_profile_edit', {'id': app.user.id}) }}">Edit profile</a></li>

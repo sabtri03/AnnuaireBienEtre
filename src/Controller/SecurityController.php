@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Provider;
+use App\Entity\Surfer;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Services\Mailer;
@@ -31,6 +33,16 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/signin_Choice", name="app_signin_Choice")
+     */
+    public function register()
+    {
+
+        return $this->render('security/choiceNew.html.twig', [
+            'controller_name' => 'RegisterControlleur',
+        ]);
+    }
 
 
     /**
@@ -38,8 +50,13 @@ class SecurityController extends AbstractController
      */
     public function new(Request $request,UserPasswordEncoderInterface $passwordEncoder , Mailer $mailer): Response
     {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $option = $request->query->get('option');
+        if($option=='Provider'){
+            $user = new Provider();
+        }elseif ($option=='Surfer'){
+            $user = new Surfer();
+        }
+        $form = $this->createForm(UserType::class, $user );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

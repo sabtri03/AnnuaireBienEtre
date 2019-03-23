@@ -41,4 +41,4 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile/provider, roles: ROLE_PROVIDER }
         - { path: ^/profile/surfer, roles: ROLE_SURFER }
-        - { path: ^/profile, roles: ROLE_USER }
+        #- { path: ^/register, roles: ROLE_USER }

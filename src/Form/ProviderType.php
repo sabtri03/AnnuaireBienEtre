@@ -87,6 +87,7 @@ class ProviderType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Provider::class,
+
         ]);
     }
 }
