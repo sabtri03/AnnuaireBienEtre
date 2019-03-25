@@ -27,6 +27,16 @@
                 <th>Validity</th>
                 <td>{{ service.validity ? 'Yes' : 'No' }}</td>
             </tr>
+            <tr>
+                <th>Provider</th>
+                <td>
+                    <td>
+                        {% for provider in service.propose %}
+                            <a href="{{ path('provider_front_show', {'id': provider.id}) }}"> {{ provider.name }}</a>
+                        {% endfor %}
+                    </td>
+                </td>
+            </tr>
         </tbody>
     </table>
 

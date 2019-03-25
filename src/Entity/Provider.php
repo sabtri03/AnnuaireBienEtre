@@ -53,7 +53,7 @@ class Provider extends User
     private $internships;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Service", mappedBy="Propose",cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Service", mappedBy="propose",cascade={"persist"})
      */
     private $category;
 

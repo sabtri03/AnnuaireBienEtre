@@ -44,7 +44,7 @@
                 <th>Category</th>
                 <td>
                     {% for category in provider.category %}
-                        {{ category.name }}
+                        <a href="{{ path('service_front_show', {'id': category.id}) }}">{{ category.name }}</a>
                     {% endfor %}
                 </td>
             </tr>

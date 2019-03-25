@@ -41,11 +41,11 @@ class Service
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Provider", inversedBy="category")
      */
-    private $Propose;
+    private $propose;
 
     public function __construct()
     {
-        $this->Propose = new ArrayCollection();
+        $this->propose = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -106,13 +106,13 @@ class Service
      */
     public function getPropose(): Collection
     {
-        return $this->Propose;
+        return $this->propose;
     }
 
     public function addPropose(Provider $propose): self
     {
-        if (!$this->Propose->contains($propose)) {
-            $this->Propose[] = $propose;
+        if (!$this->propose->contains($propose)) {
+            $this->propose[] = $propose;
         }
 
         return $this;
@@ -120,8 +120,8 @@ class Service
 
     public function removePropose(Provider $propose): self
     {
-        if ($this->Propose->contains($propose)) {
-            $this->Propose->removeElement($propose);
+        if ($this->propose->contains($propose)) {
+            $this->propose->removeElement($propose);
         }
 
         return $this;

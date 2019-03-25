@@ -50,13 +50,15 @@ class SecurityController extends AbstractController
      */
     public function new(Request $request,UserPasswordEncoderInterface $passwordEncoder , Mailer $mailer): Response
     {
+        //creat Provider if option=Provider or Surfer is option=Surfer
         $option = $request->query->get('option');
         if($option=='Provider'){
             $user = new Provider();
         }elseif ($option=='Surfer'){
             $user = new Surfer();
         }
-        $form = $this->createForm(UserType::class, $user );
+        //use the user form to fill in the email and the Password info
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -67,6 +69,7 @@ class SecurityController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
+
             // fill in the time , user group and other data
             $user->setInscriDate(new \DateTime());
             $user->setBanned(0);

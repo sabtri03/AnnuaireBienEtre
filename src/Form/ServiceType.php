@@ -25,7 +25,7 @@ class ServiceType extends AbstractType
                 'label'    => 'Is it Valid?',
                 'required' => false,
             ], array('label'=> 'Validity','attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
-            //->add('Propose')
+            //->add('propose')
         ;
     }
 
